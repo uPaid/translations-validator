@@ -1,0 +1,34 @@
+{
+    "name": "upaid/translations-validator",
+    "description": "This package provides an artisan command that validates YAML files placed in resources/lang directory in a Laravel project",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "homepage": "https://github.com/uPaid/translations-validator",
+    "require": {
+        "symfony/yaml": ">=3.2",
+        "illuminate/support": "^5.6",
+        "illuminate/console": "^5.6",
+        "illuminate/filesystem": "^5.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=5.5"
+    },
+    "autoload": {
+        "psr-4": {
+	        "Upaid\\TranslationsValidator\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Upaid\\TranslationsValidator\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Upaid\\TranslationsValidator\\TranslationsValidatorServiceProvider"
+            ]
+        }
+    }
+}
