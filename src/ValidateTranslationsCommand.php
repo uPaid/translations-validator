@@ -105,7 +105,7 @@ class ValidateTranslationsCommand extends Command
      *
      * @return Collection of SplFileInfo objects
     */
-    protected function readLanguagesFiles(string $path) : Collection
+    protected function readLanguagesFiles(?string $path) : Collection
     {
         return Collection::make($this->filesystem->allFiles($path))
             ->filter(function (SplFileInfo $fileInfo) {
