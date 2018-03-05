@@ -3,6 +3,7 @@
     "description": "This package provides an artisan command that validates YAML files placed in resources/lang directory in a Laravel project",
     "type": "library",
     "license": "MIT",
+    "version": "1.0.0",
     "minimum-stability": "stable",
     "homepage": "https://github.com/uPaid/translations-validator",
     "require": {

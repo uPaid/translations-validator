@@ -66,7 +66,7 @@ class ValidateTranslationsCommand extends Command
      */
     public function handle()
     {
-        $path = $this->argument('path', resource_path('lang'));
+        $path = $this->argument('path') ?: resource_path('lang');
         $this->readLanguagesFiles($path)->each(function (SplFileInfo $fileInfo) {
             $this->checkFile($fileInfo);
         });
@@ -75,11 +75,11 @@ class ValidateTranslationsCommand extends Command
         if ($count) {
             $message = 'There are some errors in translation files. You shall not pass!!!';
             if ($this->option('throw-parse-exception')) {
+                $this->error(implode(PHP_EOL, $this->errors));
                 throw new ParseException($message);
-            } else {
-                $this->error($message . PHP_EOL);
             }
 
+            $this->error($message . PHP_EOL);
             $this->error(implode(PHP_EOL, $this->errors));
         } else {
             $this->info('No errors in translation files. You are good to go :)');
@@ -105,7 +105,7 @@ class ValidateTranslationsCommand extends Command
      *
      * @return Collection of SplFileInfo objects
     */
-    protected function readLanguagesFiles(?string $path) : Collection
+    protected function readLanguagesFiles(string $path) : Collection
     {
         return Collection::make($this->filesystem->allFiles($path))
             ->filter(function (SplFileInfo $fileInfo) {

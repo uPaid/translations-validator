@@ -144,5 +144,4 @@ class StrictYamlParser
 
         return $value;
     }
-
 }
